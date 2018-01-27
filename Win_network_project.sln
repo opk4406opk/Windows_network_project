@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "example_udp_socket_server",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "example_multithread_tcpSocket_server", "example_multithread_tcpSocket_server\example_multithread_tcpSocket_server.vcxproj", "{02A79D1B-3C9C-4496-B9BB-29A277C059D9}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "example_multiIO_tcpSocket_server", "example_multiIO_tcpSocket_server\example_multiIO_tcpSocket_server.vcxproj", "{41AC8F63-E6BE-41CA-851E-E47FFF81AC78}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -51,6 +53,14 @@ Global
 		{02A79D1B-3C9C-4496-B9BB-29A277C059D9}.Release|x64.Build.0 = Release|x64
 		{02A79D1B-3C9C-4496-B9BB-29A277C059D9}.Release|x86.ActiveCfg = Release|Win32
 		{02A79D1B-3C9C-4496-B9BB-29A277C059D9}.Release|x86.Build.0 = Release|Win32
+		{41AC8F63-E6BE-41CA-851E-E47FFF81AC78}.Debug|x64.ActiveCfg = Debug|x64
+		{41AC8F63-E6BE-41CA-851E-E47FFF81AC78}.Debug|x64.Build.0 = Debug|x64
+		{41AC8F63-E6BE-41CA-851E-E47FFF81AC78}.Debug|x86.ActiveCfg = Debug|Win32
+		{41AC8F63-E6BE-41CA-851E-E47FFF81AC78}.Debug|x86.Build.0 = Debug|Win32
+		{41AC8F63-E6BE-41CA-851E-E47FFF81AC78}.Release|x64.ActiveCfg = Release|x64
+		{41AC8F63-E6BE-41CA-851E-E47FFF81AC78}.Release|x64.Build.0 = Release|x64
+		{41AC8F63-E6BE-41CA-851E-E47FFF81AC78}.Release|x86.ActiveCfg = Release|Win32
+		{41AC8F63-E6BE-41CA-851E-E47FFF81AC78}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
