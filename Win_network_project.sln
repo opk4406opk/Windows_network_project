@@ -19,6 +19,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "example_asyncEvent_tcpSocke
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "example_overlapped_event_tcpSocket_server", "example_overlapped_event_tcpSocket_server\example_overlapped_event_tcpSocket_server.vcxproj", "{A7500376-5765-4E65-9D50-311D7416DF5A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "example_rawSocket", "example_rawSocket\example_rawSocket.vcxproj", "{C1BDF7FE-7304-4939-B530-049FB1021E57}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "example_iocp_tcpSocket_server", "example_iocp_tcpSocket_server\example_iocp_tcpSocket_server.vcxproj", "{5FF2ED4E-B4B2-4579-BF3F-B4A611E26711}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -91,6 +95,22 @@ Global
 		{A7500376-5765-4E65-9D50-311D7416DF5A}.Release|x64.Build.0 = Release|x64
 		{A7500376-5765-4E65-9D50-311D7416DF5A}.Release|x86.ActiveCfg = Release|Win32
 		{A7500376-5765-4E65-9D50-311D7416DF5A}.Release|x86.Build.0 = Release|Win32
+		{C1BDF7FE-7304-4939-B530-049FB1021E57}.Debug|x64.ActiveCfg = Debug|x64
+		{C1BDF7FE-7304-4939-B530-049FB1021E57}.Debug|x64.Build.0 = Debug|x64
+		{C1BDF7FE-7304-4939-B530-049FB1021E57}.Debug|x86.ActiveCfg = Debug|Win32
+		{C1BDF7FE-7304-4939-B530-049FB1021E57}.Debug|x86.Build.0 = Debug|Win32
+		{C1BDF7FE-7304-4939-B530-049FB1021E57}.Release|x64.ActiveCfg = Release|x64
+		{C1BDF7FE-7304-4939-B530-049FB1021E57}.Release|x64.Build.0 = Release|x64
+		{C1BDF7FE-7304-4939-B530-049FB1021E57}.Release|x86.ActiveCfg = Release|Win32
+		{C1BDF7FE-7304-4939-B530-049FB1021E57}.Release|x86.Build.0 = Release|Win32
+		{5FF2ED4E-B4B2-4579-BF3F-B4A611E26711}.Debug|x64.ActiveCfg = Debug|x64
+		{5FF2ED4E-B4B2-4579-BF3F-B4A611E26711}.Debug|x64.Build.0 = Debug|x64
+		{5FF2ED4E-B4B2-4579-BF3F-B4A611E26711}.Debug|x86.ActiveCfg = Debug|Win32
+		{5FF2ED4E-B4B2-4579-BF3F-B4A611E26711}.Debug|x86.Build.0 = Debug|Win32
+		{5FF2ED4E-B4B2-4579-BF3F-B4A611E26711}.Release|x64.ActiveCfg = Release|x64
+		{5FF2ED4E-B4B2-4579-BF3F-B4A611E26711}.Release|x64.Build.0 = Release|x64
+		{5FF2ED4E-B4B2-4579-BF3F-B4A611E26711}.Release|x86.ActiveCfg = Release|Win32
+		{5FF2ED4E-B4B2-4579-BF3F-B4A611E26711}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
