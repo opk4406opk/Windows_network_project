@@ -66,17 +66,20 @@ namespace KojeomlibThreadPool {
 			WorkerInfo* info = new WorkerInfo();
 			info->th = new std::thread([this, workerJob, idx]() {
 				while (true) {
+					// lock
+					std::unique_lock<std::mutex> lck(mutexObj);
+					// wait를 하고 나서 lock를 해제. 다른 스레드가 이 코드로 진입(wait하게된다).
+					// wait중에 다른스레드 에서 notify를 하게 되면 lock를 걸고 wait를 빠져나온다.
+					conditionVar.wait(lck);
 					if (jobCount > 0) {
-						std::unique_lock<std::mutex> lck(mutexObj);
-						conditionVar.wait(lck);
 						allWorkers[idx]->state = WORKER_STATE::RUNNING;
+						// job 실행.
 						workerJob();
-						//
-						lck.lock();
+						// job 완료.
 						CompleteJob(idx);
-						lck.unlock();
-					}
-					else {
+						std::cout << "current job count : " << jobCount << std::endl;
+					}else {
+						std::cout << "worker id : [" << idx << "] exit." << std::endl;
 						break;
 					}
 				}

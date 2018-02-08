@@ -10,12 +10,7 @@ void main() {
 	thPool.ExcuteAll();
 
 	int inputValue;
-	while (true) {
-		std::cin >> inputValue;
-		if (inputValue == 999) break;
-
-		Sleep(1000);
-	}
+	std::cin >> inputValue;
 }
 
 void TestWork() {
