@@ -23,12 +23,18 @@ namespace KojeomlibThreadPool {
 	public:
 		unsigned int id;
 		WORKER_STATE state;
-		std::thread th;
+		std::thread* th;
+		WorkerInfo() {
+			// to do
+		}
+		~WorkerInfo() {
+			if(th != nullptr) delete th;
+		}
 
 		WorkerInfo(const WorkerInfo&& other) {
 			id = other.id;
 			state = other.state;
-			
+			th = other.th;
 		}
 	};
 
@@ -38,9 +44,10 @@ namespace KojeomlibThreadPool {
 		template<class Fn>
 		void Init(unsigned int workerCnt, unsigned int jobCnt, Fn workerJob);
 		void ExcuteAll();
+		~ThreadPool();
 	private:
-		std::vector<WorkerInfo> allWorkers;
-		std::queue<unsigned int> readyWorkers;
+		std::vector<WorkerInfo*> allWorkers;
+		std::queue<unsigned int> readyWorkerCount;
 		std::mutex mutexObj;
 		std::condition_variable conditionVar;
 		std::thread workerManager;
@@ -56,21 +63,28 @@ namespace KojeomlibThreadPool {
 		workerCount = workerCnt;
 		jobCount = jobCnt;
 		for (unsigned int idx = 0; idx < workerCount; idx++) {
-			WorkerInfo info;
-			info.th = std::thread([&conditionVar, &mutexObj, =workerJob, =workerId]() {
+			WorkerInfo* info = new WorkerInfo();
+			info->th = new std::thread([this, workerJob, idx]() {
 				while (true) {
-					std::unique_lock<std::mutex> lck(mutexObj);
-					conditionVar.wait(lck);
-					workerJob();
-					//
-					lck.lock();
-					afterDone(workerId);
-					lck.unlock();
+					if (jobCount > 0) {
+						std::unique_lock<std::mutex> lck(mutexObj);
+						conditionVar.wait(lck);
+						allWorkers[idx]->state = WORKER_STATE::RUNNING;
+						workerJob();
+						//
+						lck.lock();
+						CompleteJob(idx);
+						lck.unlock();
+					}
+					else {
+						break;
+					}
 				}
+				// worker thread destroyed...
 			});
-			info.id = idx;
-			info.state = WORKER_STATE::READY;
-			allWorkers.push(info);
+			info->id = idx;
+			info->state = WORKER_STATE::READY;
+			allWorkers.push_back(info);
 		}
 	}
 

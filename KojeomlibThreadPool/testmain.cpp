@@ -5,9 +5,19 @@
 // ref : 
 void TestWork();
 void main() {
+	KojeomlibThreadPool::ThreadPool thPool;
+	thPool.Init(3, 10, TestWork);
+	thPool.ExcuteAll();
 
+	int inputValue;
+	while (true) {
+		std::cin >> inputValue;
+		if (inputValue == 999) break;
+
+		Sleep(1000);
+	}
 }
 
 void TestWork() {
-
+	std::cout << "go!" << std::endl;
 }
