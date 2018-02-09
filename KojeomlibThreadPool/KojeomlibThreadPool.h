@@ -17,7 +17,8 @@ namespace KojeomlibThreadPool {
 
 	enum WORKER_STATE {
 		READY = 0,
-		RUNNING = 1
+		RUNNING = 1,
+		ENDED = 2
 	};
 	struct WorkerInfo {
 	public:
@@ -47,12 +48,11 @@ namespace KojeomlibThreadPool {
 		~ThreadPool();
 	private:
 		std::vector<WorkerInfo*> allWorkers;
-		std::queue<unsigned int> readyWorkerCount;
+		std::queue<int> jobs;
 		std::mutex mutexObj;
-		std::condition_variable conditionVar;
+		std::condition_variable workerCondition;
 		std::thread workerManager;
 		unsigned int workerCount;
-		unsigned int jobCount;
 		void CALLBACK_FUNC CompleteJob(unsigned int workerId);
 	};
 
@@ -61,25 +61,31 @@ namespace KojeomlibThreadPool {
 	inline void ThreadPool::Init(unsigned int workerCnt, unsigned int jobCnt, Fn workerJob)
 	{
 		workerCount = workerCnt;
-		jobCount = jobCnt;
+		for (unsigned int idx = 0; idx < jobCnt; idx++) {
+			jobs.push(idx);
+		}
 		for (unsigned int idx = 0; idx < workerCount; idx++) {
 			WorkerInfo* info = new WorkerInfo();
 			info->th = new std::thread([this, workerJob, idx]() {
 				while (true) {
 					// lock
 					std::unique_lock<std::mutex> lck(mutexObj);
-					// wait를 하고 나서 lock를 해제. 다른 스레드가 이 코드로 진입(wait하게된다).
-					// wait중에 다른스레드 에서 notify를 하게 되면 lock를 걸고 wait를 빠져나온다.
-					conditionVar.wait(lck);
-					if (jobCount > 0) {
+					if (jobs.size() > 0) {
+						jobs.pop();
+						std::cout << "worker Id : " << idx << " is Waiting..." << std::endl;
+						// wait를 하고 나서 lock를 해제. 다른 스레드가 이 코드로 진입(wait하게된다).
+						// wait중에 다른스레드 에서 notify를 하게 되면 lock를 걸고 wait를 빠져나온다.
+						workerCondition.wait(lck);
+						//
 						allWorkers[idx]->state = WORKER_STATE::RUNNING;
 						// job 실행.
 						workerJob();
 						// job 완료.
 						CompleteJob(idx);
-						std::cout << "current job count : " << jobCount << std::endl;
+						std::cout << "current job count : " << jobs.size() << std::endl;
 					}else {
 						std::cout << "worker id : [" << idx << "] exit." << std::endl;
+						allWorkers[idx]->state = WORKER_STATE::ENDED;
 						break;
 					}
 				}
