@@ -4,7 +4,6 @@
 #include <string>
 #include <vector>
 #include <time.h>
-#include <stdlib.h>
 #include <boost\format.hpp>
 #ifdef KOJEOMLIB_LOGGER_EXPORTS  
 #define KOJEOMLIB_LOGGER_API __declspec(dllexport)   
@@ -38,8 +37,6 @@ namespace KojeomlibLogger {
 		std::vector<std::string> logFileBuffer;
 		// 로그파일이 저장될 디렉토리 path.
 		std::string logFileDirPath;
-		time_t systemTimer;
-		tm timeInfo;
 	};
 }
 
