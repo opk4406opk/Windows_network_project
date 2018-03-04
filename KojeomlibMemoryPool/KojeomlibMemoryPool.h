@@ -11,6 +11,10 @@
 
 namespace KojeomlibMemoryPool {
 
+// 메모리가 해제되면 0xAA값으로 초기화시킨다.
+#define RELEASED_MEMORY_VALUE 0xAA
+// 메모리가 할당된 직후 0xFF값으로 초기화 시킨다.
+#define NEW_MEMORY_VALUE 0xFF
 #define DEFAULT_BLOCK_SIZE_BYTE 100
 	typedef unsigned char MemoryByte;
 	struct MemoryBlock {
