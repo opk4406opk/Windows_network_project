@@ -7,7 +7,7 @@
 #endif 
 
 #define CALLBACK_FUNC
-
+#include <Windows.h>
 #include <thread>
 #include <vector>
 #include <queue>

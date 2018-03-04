@@ -1,6 +1,7 @@
 #include "KojeomlibMemoryPool.h"
-#include "stdafx.h"
+
 int main() {
 	// to do
+	KojeomlibMemoryPool::KojeomMemoryPool memPool(1000);
 	return 1;
 }

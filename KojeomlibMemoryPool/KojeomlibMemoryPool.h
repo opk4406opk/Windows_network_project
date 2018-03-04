@@ -8,11 +8,16 @@
 #define KOJEOMLIB_MEMORYPOOL_API __declspec(dllimport)   
 #endif 
 
+
 namespace KojeomlibMemoryPool {
-	
+
+#define DEFAULT_BLOCK_SIZE_BYTE 100
+	typedef unsigned char MemoryByte;
 	struct MemoryBlock {
 	public:
+		unsigned int idx;
 		unsigned int dataByteLength;
+		unsigned int usedDataByte;
 		void* data;
 		MemoryBlock* nextBlock;
 	};
@@ -22,7 +27,7 @@ namespace KojeomlibMemoryPool {
 		// Inherited via IMemoryChunk
 		virtual void* GetMemory(unsigned int memorySize) override;
 		virtual void FreeMemory(void * memroyBlock) override;
-		KojeomMemoryPool(unsigned int poolSize);
+		KojeomMemoryPool(unsigned int poolByteSize);
 		~KojeomMemoryPool();
 	private:
 		unsigned int memoryPoolSize;
