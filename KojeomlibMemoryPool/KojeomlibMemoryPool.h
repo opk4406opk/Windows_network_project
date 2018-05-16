@@ -35,7 +35,7 @@ namespace KojeomlibMemoryPool {
 		~KojeomMemoryPool();
 	private:
 		unsigned int memoryPoolSize;
-		unsigned int memBlockCount;
+		unsigned int memBlockTotalCount;
 		MemoryBlock* memBlockHead;
 	};
 }
