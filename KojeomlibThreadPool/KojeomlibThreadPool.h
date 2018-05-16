@@ -70,12 +70,12 @@ namespace KojeomlibThreadPool {
 				while (true) {
 					// lock
 					std::unique_lock<std::mutex> lck(mutexObj);
+					// wait를 하고 나서 lock를 해제. 다른 스레드가 이 코드로 진입(wait하게된다).
+					// wait중에 다른스레드 에서 notify를 하게 되면 lock를 걸고 wait를 빠져나온다.
+					workerCondition.wait(lck);
 					if (jobs.size() > 0) {
 						jobs.pop();
 						std::cout << "worker Id : " << idx << " is Waiting..." << std::endl;
-						// wait를 하고 나서 lock를 해제. 다른 스레드가 이 코드로 진입(wait하게된다).
-						// wait중에 다른스레드 에서 notify를 하게 되면 lock를 걸고 wait를 빠져나온다.
-						workerCondition.wait(lck);
 						//
 						allWorkers[idx]->state = WORKER_STATE::RUNNING;
 						// job 실행.
