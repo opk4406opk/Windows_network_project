@@ -32,7 +32,7 @@ namespace KojeomlibThreadPool {
 			if(th != nullptr) delete th;
 		}
 
-		WorkerInfo(const WorkerInfo&& other) {
+		WorkerInfo(const WorkerInfo&& other) noexcept {
 			id = other.id;
 			state = other.state;
 			th = other.th;
