@@ -6,6 +6,9 @@
 #include <time.h>
 #include <mutex>
 #include <boost\format.hpp>
+
+#define KOJEOMLIB_LOGGER_EXPORTS
+
 #ifdef KOJEOMLIB_LOGGER_EXPORTS  
 #define KOJEOMLIB_LOGGER_API __declspec(dllexport)   
 #else  
@@ -17,26 +20,27 @@
 #define LOG_FILE_EXTENT ".txt"
 
 namespace KojeomlibLogger {
-	enum LOG_TYPE {
-		TYPE_WARNNING = 0,
-		TYPE_ERROR = 1
+	enum class LOG_TYPE {
+		TYPE_INFO,
+		TYPE_WARNNING,
+		TYPE_ERROR
 	};
 	class KoLogger {
 	public:
 		KoLogger();
 		~KoLogger();
 		// 메세지 로그를 Console 창으로 출력합니다. ( Not thread safe. )
-		void MsgGoToConsole(std::string logMsg, LOG_TYPE type);
+		KOJEOMLIB_LOGGER_API void MsgGoToConsole(std::string logMsg, LOG_TYPE type);
 		//메세지 로그를 Console 창으로 출력합니다. ( Thread safe. )
-		void MsgGoToConsoleSafely(std::string logMsg, LOG_TYPE type);
+		KOJEOMLIB_LOGGER_API void MsgGoToConsoleSafely(std::string logMsg, LOG_TYPE type);
 		// 메세지 로그를 파일 버퍼에 저장한다. ( Not thread safe.)
-		void SetMsgToLogFileBuffer(std::string logMsg, LOG_TYPE type);
+		KOJEOMLIB_LOGGER_API void SetMsgToLogFileBuffer(std::string logMsg, LOG_TYPE type);
 		// 메세지 로그를 파일 버퍼에 저장한다. ( Thread safe. )
-		void SetMsgToLogFileBufferSafely(std::string logMsg, LOG_TYPE type);
+		KOJEOMLIB_LOGGER_API void SetMsgToLogFileBufferSafely(std::string logMsg, LOG_TYPE type);
 		// 파일 버퍼를 외부 파일로 저장합니다. ( Not thread safe. )
-		void FlushLogBufferToFile();
+		KOJEOMLIB_LOGGER_API void FlushLogBufferToFile();
 		// 로그파일이 저장될 디렉토리 path.
-		void SetDirectory(std::string dirPath);
+		KOJEOMLIB_LOGGER_API void SetDirectory(std::string dirPath);
 	private:
 		std::ifstream ifstreamObj;
 		std::ofstream ofstreamObj;
