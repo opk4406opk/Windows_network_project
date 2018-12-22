@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "KojeomlibMemoryPool.h"
 
 int main() {
