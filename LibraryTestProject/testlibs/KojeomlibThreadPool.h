@@ -46,7 +46,7 @@ namespace KojeomlibThreadPool {
 		template<class Fn>
 		KOJEOMLIB_THREAD_POOL_API void Init(unsigned int workerCnt, unsigned int jobCnt, Fn workerJob);
 		KOJEOMLIB_THREAD_POOL_API void ExcuteAll();
-		KOJEOMLIB_THREAD_POOL_API ~ThreadPool();
+		~ThreadPool();
 	private:
 		std::vector<WorkerInfo*> allWorkers;
 		std::queue<int> jobs;
@@ -54,7 +54,7 @@ namespace KojeomlibThreadPool {
 		std::condition_variable workerCondition;
 		std::thread workerManager;
 		unsigned int workerCount;
-		KOJEOMLIB_THREAD_POOL_API void CALLBACK_FUNC CompleteJob(unsigned int workerId);
+		void CALLBACK_FUNC CompleteJob(unsigned int workerId);
 	};
 
 	// inline methods.

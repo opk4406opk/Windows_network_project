@@ -8,6 +8,7 @@
 #define KOJEOMLIB_MEMORYPOOL_API __declspec(dllimport)   
 #endif 
 
+// reference document link : https://www.codeproject.com/Articles/15527/C-Memory-Pool
 
 namespace KojeomlibMemoryPool {
 
