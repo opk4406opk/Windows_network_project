@@ -31,6 +31,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KojeomlibMemoryPool", "Koje
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LibraryTestProject", "LibraryTestProject\LibraryTestProject.vcxproj", "{A0AF914A-AB18-459A-93C5-F061A05E3FEF}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimpleHelloMyWorldServer", "SimpleHelloMyWorldServer\SimpleHelloMyWorldServer.vcxproj", "{E5596EE3-52F5-441E-983D-FA63259A147E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -151,6 +153,14 @@ Global
 		{A0AF914A-AB18-459A-93C5-F061A05E3FEF}.Release|x64.Build.0 = Release|x64
 		{A0AF914A-AB18-459A-93C5-F061A05E3FEF}.Release|x86.ActiveCfg = Release|Win32
 		{A0AF914A-AB18-459A-93C5-F061A05E3FEF}.Release|x86.Build.0 = Release|Win32
+		{E5596EE3-52F5-441E-983D-FA63259A147E}.Debug|x64.ActiveCfg = Debug|x64
+		{E5596EE3-52F5-441E-983D-FA63259A147E}.Debug|x64.Build.0 = Debug|x64
+		{E5596EE3-52F5-441E-983D-FA63259A147E}.Debug|x86.ActiveCfg = Debug|Win32
+		{E5596EE3-52F5-441E-983D-FA63259A147E}.Debug|x86.Build.0 = Debug|Win32
+		{E5596EE3-52F5-441E-983D-FA63259A147E}.Release|x64.ActiveCfg = Release|x64
+		{E5596EE3-52F5-441E-983D-FA63259A147E}.Release|x64.Build.0 = Release|x64
+		{E5596EE3-52F5-441E-983D-FA63259A147E}.Release|x86.ActiveCfg = Release|Win32
+		{E5596EE3-52F5-441E-983D-FA63259A147E}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
