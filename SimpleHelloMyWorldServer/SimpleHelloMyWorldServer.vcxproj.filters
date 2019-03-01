@@ -27,10 +27,16 @@
     <ClInclude Include="SimpleHelloMyWorldServer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MainServer.h">
+    <ClInclude Include="IServer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IServer.h">
+    <ClInclude Include="IPacket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LoginServer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DataUnits.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -41,10 +47,10 @@
     <ClCompile Include="SimpleHelloMyWorldServer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MainServer.cpp">
+    <ClCompile Include="IServer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="IServer.cpp">
+    <ClCompile Include="LoginServer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

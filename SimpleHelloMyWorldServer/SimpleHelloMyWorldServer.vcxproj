@@ -92,7 +92,7 @@
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
@@ -149,8 +149,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="DataUnits.h" />
+    <ClInclude Include="IPacket.h" />
     <ClInclude Include="IServer.h" />
-    <ClInclude Include="MainServer.h" />
+    <ClInclude Include="LoginServer.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SimpleHelloMyWorldServer.h" />
     <ClInclude Include="stdafx.h" />
@@ -158,7 +160,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IServer.cpp" />
-    <ClCompile Include="MainServer.cpp" />
+    <ClCompile Include="LoginServer.cpp" />
     <ClCompile Include="SimpleHelloMyWorldServer.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
