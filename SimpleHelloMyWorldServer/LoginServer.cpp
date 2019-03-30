@@ -33,8 +33,8 @@ unsigned long WINAPI ThreadProc(LPVOID parm)
 		}
 		else
 		{
-			//
-			std::cout << "Buffer data : " << socketInfo->buffer << std::endl;
+			LoginPacket* receivedPacket = (LoginPacket*)(socketInfo->buffer);
+			std::cout << "Login user ID : " << receivedPacket->ID << " PW : " << receivedPacket->PW << std::endl;
 			//
 			int ret = WSASend(socketInfo->fd, &(socketInfo->wsabuf), 1, &readBytes, 0, NULL, NULL);
 			if (ret == SOCKET_ERROR)
