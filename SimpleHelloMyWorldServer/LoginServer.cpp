@@ -23,6 +23,7 @@ unsigned long WINAPI ThreadProc(LPVOID parm)
 		int ret = GetQueuedCompletionStatus(g_hIocp, &readBytes, &completionKey, (LPOVERLAPPED*)&socketInfo, INFINITE);
 		if (ret == FALSE)
 		{
+			std::cout << "GetQueuedCompletionStatus : FALSE" << std::endl;
 			if (socketInfo != NULL)
 			{
 				closesocket(socketInfo->fd);
@@ -45,7 +46,7 @@ unsigned long WINAPI ThreadProc(LPVOID parm)
 			}
 		}
 		flags = 0;
-		memset(socketInfo->buffer, 0x00, MAX_PACKET_LINE);
+		memset(socketInfo->buffer, 0x00, sizeof(LoginPacket));
 		socketInfo->readN = 0;
 		socketInfo->writeN = 0;
 		WSARecv(socketInfo->fd, &(socketInfo->wsabuf), 1, &readBytes, &flags, &socketInfo->overlapped, NULL);
@@ -54,6 +55,8 @@ unsigned long WINAPI ThreadProc(LPVOID parm)
 
 void LoginServer::Init()
 {
+	std::cout << "LoginServer::Init" << std::endl;
+
 	WSAStartup(MAKEWORD(2, 2), &WsaData);
 	
 	ListenSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
@@ -65,10 +68,12 @@ void LoginServer::Init()
 	if (bind(ListenSocket, (sockaddr*)&Addr, sizeof(Addr)) == SOCKET_ERROR)
 	{
 		// print error
+		std::cout << "Bind SOCKET_ERROR" << std::endl;
 	}
 	if (listen(ListenSocket, 5) == SOCKET_ERROR)
 	{
 		// print error
+		std::cout << "Listen SOCKET_ERROR" << std::endl;
 	}
 	// Init iocp.
 	g_hIocp = CreateIoCompletionPort(INVALID_HANDLE_VALUE, NULL, 0, MAXIMUM_THREAD_NUM);
@@ -82,6 +87,7 @@ void LoginServer::Init()
 
 void LoginServer::Start()
 {
+	std::cout << "LoginServer::Start" << std::endl;
 	// main loop.
 	unsigned long readN = 0, flags = 0;
 	int addrlen = sizeof(Addr);
@@ -92,13 +98,14 @@ void LoginServer::Start()
 		if (ClientSocket == INVALID_SOCKET)
 		{
 			// error
+			std::cout << "ClientSocket INVALID_SOCKET" << std::endl;
 		}
 		SocketInfo = (LoginSocketInfo*)malloc(sizeof(LoginSocketInfo));
 		SocketInfo->fd = ClientSocket;
 		SocketInfo->readN = 0;
 		SocketInfo->writeN = 0;
 		SocketInfo->wsabuf.buf = SocketInfo->buffer;
-		SocketInfo->wsabuf.len = MAX_PACKET_LINE;
+		SocketInfo->wsabuf.len = sizeof(LoginPacket);
 		memset(&(SocketInfo->overlapped), 0x00, sizeof(OVERLAPPED));
 
 		CreateIoCompletionPort((HANDLE)ClientSocket, g_hIocp, (ULONG_PTR)SocketInfo, MAXIMUM_THREAD_NUM);

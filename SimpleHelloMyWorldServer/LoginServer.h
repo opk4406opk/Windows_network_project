@@ -3,7 +3,6 @@
 #include "IServer.h"
 #include "IPacket.h"
 
-#define MAX_PACKET_LINE 40
 #define SERVER_PORT 8000
 #define SERVER_IP "127.0.0.1"
 // 0인경우 CPU수에 맞춰서 조절.
@@ -19,7 +18,7 @@ public:
 struct LoginSocketInfo {
 	OVERLAPPED overlapped;
 	SOCKET fd;
-	BYTE_UNIT buffer[MAX_PACKET_LINE];
+	BYTE_UNIT buffer[sizeof(LoginPacket)];
 	int readN;
 	int writeN;
 	WSABUF wsabuf;
