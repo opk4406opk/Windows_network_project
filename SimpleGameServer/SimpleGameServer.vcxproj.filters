@@ -24,9 +24,6 @@
     <ClInclude Include="Resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SimpleHelloMyWorldServer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="IServer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -39,12 +36,12 @@
     <ClInclude Include="DataUnits.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SimpleGameServer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SimpleHelloMyWorldServer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="IServer.cpp">
@@ -53,18 +50,21 @@
     <ClCompile Include="LoginServer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="SimpleHelloMyWorldServer.rc">
-      <Filter>Resource Files</Filter>
-    </ResourceCompile>
+    <ClCompile Include="SimpleGameServer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="SimpleHelloMyWorldServer.ico">
+    <Image Include="SimpleGameServer.ico">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SimpleGameServer.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

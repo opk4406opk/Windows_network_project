@@ -24,6 +24,7 @@
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>SimpleHelloMyWorldServer</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>SimpleGameServer</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -154,14 +155,14 @@
     <ClInclude Include="IServer.h" />
     <ClInclude Include="LoginServer.h" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="SimpleHelloMyWorldServer.h" />
+    <ClInclude Include="SimpleGameServer.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IServer.cpp" />
     <ClCompile Include="LoginServer.cpp" />
-    <ClCompile Include="SimpleHelloMyWorldServer.cpp" />
+    <ClCompile Include="SimpleGameServer.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -170,11 +171,11 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="SimpleHelloMyWorldServer.rc" />
+    <Image Include="SimpleGameServer.ico" />
+    <Image Include="small.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="SimpleHelloMyWorldServer.ico" />
-    <Image Include="small.ico" />
+    <ResourceCompile Include="SimpleGameServer.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
